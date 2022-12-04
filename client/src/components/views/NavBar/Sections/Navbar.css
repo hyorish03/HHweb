@@ -5,18 +5,23 @@
   border-bottom: solid 1px #e8e8e8;
   overflow: auto;
   box-shadow: 0 0 30px #f3f1f1;
-  background-color: white;
+  background-color: #ECE6CC;
+
+  
 }
 
 .menu__logo {
   width: 150px;
   float: left;
+  color:black;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .menu__logo a {
   display: inline-block;
   font-size: 20px;
   padding: 19px 20px;
+  color: black;
 }
 
 .menu__container .ant-menu-item {
@@ -30,15 +35,18 @@
 .menu__container .ant-menu-item a,
 .menu__container .ant-menu-submenu-title a {
   padding: 10px 15px;
+  background-color: #ECE6CC;
 }
 
 .menu__container .ant-menu-horizontal {
   border-bottom: none;
+  background-color: #ECE6CC;
+
 }
 
 .menu__container .menu_left {
   float: left;
-}
+  }
 
 .menu__container .menu_rigth {
   float: right;
@@ -49,8 +57,9 @@
   height: 32px;
   padding: 6px;
   margin-top: 8px;
-  display: none !important; /* use of important to overwrite ant-btn */
-  background: #3e91f7;
+  display: none !important;
+  border-color:#e8e8e8; /* use of important to overwrite ant-btn */
+  background-color: #BEA791;
 }
 
 .menu_drawer .ant-drawer-body {
@@ -83,5 +92,6 @@
 
   .menu__logo a {
     padding: 10px 20px;
+
   }
 }
