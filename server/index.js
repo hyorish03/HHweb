@@ -27,8 +27,8 @@ const connect = mongoose
 
 app.use(
   cors({
-    origin: "https://all4u.hislogs.com",
-    optionsSuccessStatus: 200,
+    origin: true,
+    credentials: true,
   })
 );
 
