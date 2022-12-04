@@ -16,6 +16,8 @@ if (process.env.NODE_ENV !== "development") {
   Axios.defaults.baseURL = "https://all4u.hislogs.com/";
 }
 
+Axios.defaults.withCredentials = true;
+
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
 
 ReactDOM.render(
