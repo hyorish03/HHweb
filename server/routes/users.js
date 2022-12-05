@@ -49,10 +49,16 @@ router.post("/login", (req, res) => {
           sameSite: "none",
           secure: true,
         });
-        res.cookie("w_auth", user.token).status(200).json({
-          loginSuccess: true,
-          userId: user._id,
-        });
+        res
+          .cookie("w_auth", user.token, {
+            sameSite: "none",
+            secure: true,
+          })
+          .status(200)
+          .json({
+            loginSuccess: true,
+            userId: user._id,
+          });
       });
     });
   });
