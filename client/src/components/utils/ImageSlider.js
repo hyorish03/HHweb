@@ -1,5 +1,7 @@
 import React from "react";
 import { Carousel } from "antd";
+import Axios from "axios";
+
 function ImageSlider(props) {
   return (
     <div>
@@ -13,7 +15,7 @@ function ImageSlider(props) {
                 objectFit: "cover",
                 objectPosition: "center",
               }}
-              src={`http://localhost:5000/${image}`}
+              src={`${Axios.defaults.baseURL}/${image}`}
             />
           </div>
         ))}

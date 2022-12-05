@@ -12,8 +12,10 @@ import promiseMiddleware from "redux-promise";
 import ReduxThunk from "redux-thunk";
 import Axios from "axios";
 
-if (process.env.NODE_ENV !== "development") {
-  Axios.defaults.baseURL = "https://all4u.hislogs.com/";
+if (process.env.NODE_ENV === "development") {
+  Axios.defaults.baseURL = "http://localhost:5000";
+} else {
+  Axios.defaults.baseURL = "https://all4u.hislogs.com";
 }
 
 Axios.defaults.withCredentials = true;
