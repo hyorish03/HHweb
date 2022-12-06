@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { FaCode } from "react-icons/fa";
 import axios from "axios";
-import { Icon, Col, Card, Row, Carousel } from "antd";
+import { Icon, Col, Card, Row, Carousel, Checkbox } from "antd";
 import Meta from "antd/lib/card/Meta";
 import Column from "antd/lib/table/Column";
 import ImageSlider from "../../utils/ImageSlider";
+import CheckBox from "./Sections/CheckBox";
+import { Clothes } from "./Sections/Datas";
+
 function LandingPage() {
   const [products, setProducts] = useState([]);
   const [Skip, setSkip] = useState(0);
   const [Limit, setLimit] = useState(8);
   const [PostSize, setPostSize] = useState(0);
+  const [Filters, setFilters] = useState({
+    clothes: [],
+    price: [],
+  });
 
   useEffect(() => {
     let body = {
@@ -24,7 +31,7 @@ function LandingPage() {
     return (
       <Col lg={6} md={8} xs={24} key={index}>
         <Card cover={<ImageSlider images={product.images} />}>
-          <Meta title={product.title} description={`$${product.price}`} />
+          <Meta title={product.title} description={`원${product.price}`} />
         </Card>
       </Col>
     );
@@ -56,14 +63,33 @@ function LandingPage() {
     setSkip(skip);
   };
 
+  const showFilteredResults = (filters) => {
+    let body = {
+      skip: 0,
+      limit: Limit,
+      filters: filters,
+    };
+    getProducts(body);
+    setSkip(0);
+  };
+
+  const handleFilters = (filters, category) => {
+    const newFilters = { ...Filters };
+    newFilters[category] = filters;
+    showFilteredResults(newFilters);
+  };
+
   return (
     <div style={{ width: "75%", margin: "3rem auto", display: "flex", flexDirection: "column" }}>
       <div style={{ textAlign: "center" }}>
         <h2>
-          Let's Select Clothes <Icon type="rocket" />
+          Let's Select Your Clothes <Icon type="rocket" />
         </h2>
       </div>
       {/*Filter*/}
+
+      {/*Checkbox*/}
+      <CheckBox list={Clothes} handleFilters={(filters) => handleFilters(filters, "Clothes")} />
 
       {/*Search*/}
 
