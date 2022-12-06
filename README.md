@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 =======
 ## 👕당신을 위한 모든 옷, All For You👕
 
@@ -20,4 +20,3 @@
 
 - Github : @fineimagination
 - Instagram: @hyunmail
->>>>>>> 8e23d1d5f208422077fd553882b4cbe9aae4e3a2
