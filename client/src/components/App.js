@@ -9,6 +9,8 @@ import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer";
 import UploadProductPage from "./views/UploadProductPage/UploadProductPage";
 import ProductPage from "./views/ProductPage";
+import DetailProductPage from "./views/DetailProductPage/DetailProductPage";
+import CartPage from "./views/CartPage/CartPage";
 
 function App() {
   return (
@@ -20,7 +22,8 @@ function App() {
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/Product/upload" component={Auth(UploadProductPage, true)} />
-          <Route exact path="/Product/:id" component={Auth(ProductPage, true)} />
+          <Route exact path="/Product/:productId" component={Auth(DetailProductPage, null)} />
+          <Route exact path="/user/cart" component={Auth(CartPage, true)} />
         </Switch>
       </div>
       <Footer />

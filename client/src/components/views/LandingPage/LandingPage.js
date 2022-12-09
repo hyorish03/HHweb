@@ -7,9 +7,8 @@ import Column from "antd/lib/table/Column";
 import ImageSlider from "../../utils/ImageSlider";
 import CheckBox from "./Sections/CheckBox";
 import { Clothes } from "./Sections/Datas";
-import { useHistory } from "react-router-dom";
 
-const LandingPage = () => {
+function LandingPage() {
   const [products, setProducts] = useState([]);
   const [Skip, setSkip] = useState(0);
   const [Limit, setLimit] = useState(8);
@@ -18,7 +17,6 @@ const LandingPage = () => {
     clothes: [],
     price: [],
   });
-  let history = useHistory();
 
   useEffect(() => {
     let body = {
@@ -32,11 +30,8 @@ const LandingPage = () => {
   const renderCards = products.map((product, index) => {
     return (
       <Col lg={6} md={8} xs={24} key={index}>
-        <Card
-          cover={<ImageSlider images={product.images} />}
-          onClick={() => history.push(`/Product/${product._id}`)}
-        >
-          <Meta title={product.title} description={`${product.price}원 `} />
+        <Card cover={<a href={`/product/${product._id}`}><ImageSlider images={product.images} /></a>}>
+          <Meta title={product.title} description={`${product.price}원`} />
         </Card>
       </Col>
     );
@@ -115,6 +110,6 @@ const LandingPage = () => {
       )}
     </div>
   );
-};
+}
 
 export default LandingPage;
