@@ -5,7 +5,7 @@ const { auth } = require("../middleware/auth");
 const multer = require("multer");
 const { Product } = require("../models/Product");
 const { json } = require("body-parser");
-const {Axios} = require("axios");
+const { Axios } = require("axios");
 //=================================
 //             Product
 //=================================
@@ -79,41 +79,32 @@ router.post("/products", (req, res) => {
 //-------------------------------------------------------
 
 router.get("/products_by_id", (req, res) => {
-  
-  let type = req.query.type
-  let productIds = req.query.id
+  let type = req.query.type;
+  let productIds = req.query.id;
   //productId를 이용해서 DB에서 productId와 같은 상품의 정보를 가져온다.
 
   //type이 array일때, -> id =123, 456, 8888,666를
-  if(type === "array") {
-
-
-    let ids = req.query.id.split(',')
-    productIds = ids.map(item => {
-      return item
-    })
+  if (type === "array") {
+    let ids = req.query.id.split(",");
+    productIds = ids.map((item) => {
+      return item;
+    });
   }
   //productIds=['123', '456', '8888', '666']로 바꿔줘야한다.
 
-
   //1개 넣어줄때 {_id: productIds} / 여러개 넣어줘야 할때(카트에 담긴 여러개의 상품을 불러올 때) {_id: {$in: productIds}}을 이용해 준다.
-  Product.find({_id: {$in: productIds}})
-    .populate('writer')
+  Product.find({ _id: { $in: productIds } })
+    .populate("writer")
     .exec((err, product) => {
-      if(err) return res.status(400).send(err)
-      return res.status(200).send(product)
-    })
-
+      if (err) return res.status(400).send(err);
+      return res.status(200).send(product);
+    });
 });
 
-//Axios.get(`/api/product/products_by_id?id=${productId}&type=single`)
-/*
-router.delete("/products_by_id", (req, res) => {
-  let productIds = req.query.id
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
 
-  Product.deleteOne({ _id: productIds }).then(res.status(200).json({})).catch(res.status());
+  Product.deleteOne({ _id: id }).then(res.status(200).json({})).catch(res.status());
 });
-*/
-
 
 module.exports = router;
