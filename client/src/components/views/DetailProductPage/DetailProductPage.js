@@ -6,6 +6,7 @@ import styled from "styled-components";
 import ImageGallery from "react-image-gallery";
 import Axios from "axios";
 import { useHistory } from "react-router-dom";
+import "react-image-gallery/styles/css/image-gallery.css";
 
 function DetailProductPage(props) {
   const productId = props.match.params.productId;
@@ -52,7 +53,7 @@ function DetailProductPage(props) {
             <Col lg={12} sm={24}>
               <ImageGallery
                 items={product.images.map((image) => ({
-                  origin: `${Axios.defaults.baseURL}/${image}`,
+                  original: `${Axios.defaults.baseURL}/${image}`,
                   thumbnail: `${Axios.defaults.baseURL}/${image}`,
                 }))}
               />
@@ -72,14 +73,4 @@ function DetailProductPage(props) {
 
 export default DetailProductPage;
 
-const Wrapper = styled.div`
-  .image-gallery-thumbnail {
-    width: 100%;
-  }
-
-  .image-gallery-play-button,
-  .image-gallery-fullscreen-button {
-    position: absolute;
-    top: 10px;
-  }
-`;
+const Wrapper = styled.div``;
